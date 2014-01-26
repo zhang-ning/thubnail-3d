@@ -1,0 +1,21 @@
+{
+  "name": "thubnail-3d",
+  "repo": "zhang-ning/thubnail-3d",
+  "description": "thubnail with 3d effect",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "zhang-ning/tengine": "*"
+  },
+  "development": {
+    "component/domify": "*"
+  },
+  "license": "MIT",
+  "scripts": [
+    "index.js",
+    "template.js"
+  ],
+  "styles": [
+    "thubnail-3d.css"
+  ]
+}

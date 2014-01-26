@@ -1,0 +1,1 @@
+module.exports = '<div class="thumbnail-3d">\n  <div class="roate">\n    <img src="{{src}}">\n    <a href="#" class="span">{{ msg }}.</a>\n  </div>\n</div>\n';
