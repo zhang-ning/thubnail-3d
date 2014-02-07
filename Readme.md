@@ -2,6 +2,7 @@
 # thubnail-3d
 
   thubnail with 3d effect
+  [demo](http://besideriver.com/thubnail-3d/)
 
 ## Installation
 
