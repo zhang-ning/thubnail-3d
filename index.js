@@ -4,26 +4,18 @@
 
 
 var tengine = require('tengine')
-  , html    = require('./template.js');
+  , html    = require('./template.js')
+  , Configurable = require('configurable.js'); 
 
 //exports
 exports = module.exports = Thumbanil;
 
 
-function Thumbanil(imgs){
-  if(!(this instanceof Thumbanil)) return new Thumbanil(imgs);
-  if(!Array.isArray(imgs)) throw new TypeError('Array expected');
-
-
-  //after released this will be removed
-  var mockdata = {
-    src:"http://www.whichbetter.net/wp-content/uploads/2011/01/bot2-229x300.jpg?fc2c5a",
-    msg:'hello world'
-  }
-
-  this.element = tengine(mockdata)
-                    .compile(html);
+function Thumbanil(){
+  if(!(this instanceof Thumbanil)) return new Thumbanil();
 }
+
+Configurable(Thumbanil.prototype)
 
 
 /**
@@ -31,6 +23,11 @@ function Thumbanil(imgs){
  * return this;
  */
 Thumbanil.prototype.attachTo = function(parent){
+  var img = {
+    src : this.get('background'),
+    label : this.get('label')
+  }
+  this.element = tengine(img).compile(html);
   parent.appendChild(this.element);
   return this;
 }

@@ -1,1 +1,1 @@
-module.exports = '<div class="thumbnail-3d">\n  <div class="roate">\n    <img src="{{src}}">\n    <a href="#" class="span">{{ msg }}.</a>\n  </div>\n</div>\n';
+module.exports = '<!-- Container -->\n<div class="thumb">\n  <a href="#" style=\'background-image:url({{ src }})\'>\n    <!-- Label -->\n    <span >{{ label }}</span>\n  </a>\n</div>\n';

@@ -199,6 +199,77 @@ require.relative = function(parent) {
 
   return localRequire;
 };
+require.register("zhang-ning-tengine/index.js", Function("exports, require, module",
+"/**\n\
+ * Module dependence\n\
+ */\n\
+\n\
+\n\
+var domify       = require('domify')\n\
+  , Configurable = require('configurable.js');\n\
+\n\
+exports = module.exports = Tengine\n\
+\n\
+Configurable(Tengine.prototype);\n\
+\n\
+function Tengine (data){\n\
+  if(!(this instanceof Tengine)) return new Tengine(data);\n\
+  if(typeof data !== 'object' && null !== data) throw new TypeError('object expected.');\n\
+  this._data = data;\n\
+}\n\
+\n\
+Tengine.prototype.compile = function(doc){\n\
+  this.reg = this.get('symble') || /.*{{\\s*|\\s*}}.*/g; \n\
+  doc = typeof doc === 'string' ? domify(doc) : doc;\n\
+  compile.call(this,doc);\n\
+  return doc;\n\
+};\n\
+\n\
+\n\
+\n\
+/**\n\
+ * compile dom\n\
+ * @param {dom} doc\n\
+ * @return null\n\
+ * @api private\n\
+ */\n\
+function compile(doc) {\n\
+  text.call(this,doc);\n\
+  attr.call(this,doc);\n\
+  child.call(this,doc);\n\
+}\n\
+\n\
+function text(doc) {\n\
+  if(!this.reg.test(doc.nodeValue)) return;\n\
+  var key = doc.nodeValue\n\
+                .replace(/\\r|\\n\
+/g,'') // remove link-breaking symble\n\
+                .replace(this.reg, ''); // get key\n\
+\n\
+  //replace nodeValue with the data\n\
+  doc.nodeValue = doc.nodeValue.replace(/\\r|\\n\
+/g,'').replace(/{{.*}}/, this._data[key]);\n\
+}\n\
+\n\
+function child(doc) {\n\
+  if (!doc.childNodes.length) {\n\
+    return;\n\
+  } \n\
+  for (var i = 0, len = doc.childNodes.length; i < len; i++) {\n\
+    compile.call(this,doc.childNodes[i]);\n\
+  }\n\
+}\n\
+\n\
+function attr(doc){\n\
+  if(!doc.attributes) return;\n\
+  for (var i = 0, len = doc.attributes.length; i < len; i++) {\n\
+    text.call(this,doc.attributes[i]);\n\
+  }\n\
+}\n\
+\n\
+\n\
+//@ sourceURL=zhang-ning-tengine/index.js"
+));
 require.register("visionmedia-configurable.js/index.js", Function("exports, require, module",
 "\n\
 /**\n\
@@ -302,77 +373,6 @@ module.exports = function(obj){\n\
   return obj;\n\
 };//@ sourceURL=visionmedia-configurable.js/index.js"
 ));
-require.register("zhang-ning-tengine/index.js", Function("exports, require, module",
-"/**\n\
- * Module dependence\n\
- */\n\
-\n\
-\n\
-var domify       = require('domify')\n\
-  , Configurable = require('configurable.js');\n\
-\n\
-exports = module.exports = Tengine\n\
-\n\
-Configurable(Tengine.prototype);\n\
-\n\
-function Tengine (data){\n\
-  if(!(this instanceof Tengine)) return new Tengine(data);\n\
-  if(typeof data !== 'object' && null !== data) throw new TypeError('object expected.');\n\
-  this._data = data;\n\
-}\n\
-\n\
-Tengine.prototype.compile = function(doc){\n\
-  this.reg = this.get('symble') || /.*{{\\s*|\\s*}}.*/g; \n\
-  doc = typeof doc === 'string' ? domify(doc) : doc;\n\
-  compile.call(this,doc);\n\
-  return doc;\n\
-};\n\
-\n\
-\n\
-\n\
-/**\n\
- * compile dom\n\
- * @param {dom} doc\n\
- * @return null\n\
- * @api private\n\
- */\n\
-function compile(doc) {\n\
-  text.call(this,doc);\n\
-  attr.call(this,doc);\n\
-  child.call(this,doc);\n\
-}\n\
-\n\
-function text(doc) {\n\
-  if(!this.reg.test(doc.nodeValue)) return;\n\
-  var key = doc.nodeValue\n\
-                .replace(/\\r|\\n\
-/g,'') // remove link-breaking symble\n\
-                .replace(this.reg, ''); // get key\n\
-\n\
-  //replace nodeValue with the data\n\
-  doc.nodeValue = doc.nodeValue.replace(/\\r|\\n\
-/g,'').replace(/{{.*}}/, this._data[key]);\n\
-}\n\
-\n\
-function child(doc) {\n\
-  if (!doc.childNodes.length) {\n\
-    return;\n\
-  } \n\
-  for (var i = 0, len = doc.childNodes.length; i < len; i++) {\n\
-    compile.call(this,doc.childNodes[i]);\n\
-  }\n\
-}\n\
-\n\
-function attr(doc){\n\
-  if(!doc.attributes) return;\n\
-  for (var i = 0, len = doc.attributes.length; i < len; i++) {\n\
-    text.call(this,doc.attributes[i]);\n\
-  }\n\
-}\n\
-\n\
-\n\
-//@ sourceURL=zhang-ning-tengine/index.js"
-));
 require.register("component-domify/index.js", Function("exports, require, module",
 "\n\
 /**\n\
@@ -469,26 +469,18 @@ require.register("thubnail-3d/index.js", Function("exports, require, module",
 \n\
 \n\
 var tengine = require('tengine')\n\
-  , html    = require('./template.js');\n\
+  , html    = require('./template.js')\n\
+  , Configurable = require('configurable.js'); \n\
 \n\
 //exports\n\
 exports = module.exports = Thumbanil;\n\
 \n\
 \n\
-function Thumbanil(imgs){\n\
-  if(!(this instanceof Thumbanil)) return new Thumbanil(imgs);\n\
-  if(!Array.isArray(imgs)) throw new TypeError('Array expected');\n\
-\n\
-\n\
-  //after released this will be removed\n\
-  var mockdata = {\n\
-    src:\"http://www.whichbetter.net/wp-content/uploads/2011/01/bot2-229x300.jpg?fc2c5a\",\n\
-    msg:'hello world'\n\
-  }\n\
-\n\
-  this.element = tengine(mockdata)\n\
-                    .compile(html);\n\
+function Thumbanil(){\n\
+  if(!(this instanceof Thumbanil)) return new Thumbanil();\n\
 }\n\
+\n\
+Configurable(Thumbanil.prototype)\n\
 \n\
 \n\
 /**\n\
@@ -496,6 +488,11 @@ function Thumbanil(imgs){\n\
  * return this;\n\
  */\n\
 Thumbanil.prototype.attachTo = function(parent){\n\
+  var img = {\n\
+    src : this.get('background'),\n\
+    label : this.get('label')\n\
+  }\n\
+  this.element = tengine(img).compile(html);\n\
   parent.appendChild(this.element);\n\
   return this;\n\
 }\n\
@@ -503,14 +500,17 @@ Thumbanil.prototype.attachTo = function(parent){\n\
 //@ sourceURL=thubnail-3d/index.js"
 ));
 require.register("thubnail-3d/template.js", Function("exports, require, module",
-"module.exports = '<div class=\"thumbnail-3d\">\\n\
-  <div class=\"roate\">\\n\
-    <img src=\"{{src}}\">\\n\
-    <a href=\"#\" class=\"span\">{{ msg }}.</a>\\n\
-  </div>\\n\
+"module.exports = '<!-- Container -->\\n\
+<div class=\"thumb\">\\n\
+  <a href=\"#\" style=\\'background-image:url({{ src }})\\'>\\n\
+    <!-- Label -->\\n\
+    <span >{{ label }}</span>\\n\
+  </a>\\n\
 </div>\\n\
 ';//@ sourceURL=thubnail-3d/template.js"
 ));
+
+
 
 
 
@@ -523,5 +523,8 @@ require.alias("component-domify/index.js", "zhang-ning-tengine/deps/domify/index
 require.alias("visionmedia-configurable.js/index.js", "zhang-ning-tengine/deps/configurable.js/index.js");
 
 require.alias("zhang-ning-tengine/index.js", "zhang-ning-tengine/index.js");
+require.alias("visionmedia-configurable.js/index.js", "thubnail-3d/deps/configurable.js/index.js");
+require.alias("visionmedia-configurable.js/index.js", "configurable.js/index.js");
+
 require.alias("component-domify/index.js", "thubnail-3d/deps/domify/index.js");
 require.alias("component-domify/index.js", "domify/index.js");
