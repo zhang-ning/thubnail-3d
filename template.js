@@ -1,1 +1,0 @@
-module.exports = '<!-- Container -->\n<div class="thumb">\n  <a href="#" style=\'background-image:url({{ src }})\'>\n    <!-- Label -->\n    <span >{{ label }}</span>\n  </a>\n</div>\n';
