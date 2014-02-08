@@ -423,12 +423,13 @@ map.rect = [1, '<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">','</s
 \n\
 function parse(html) {\n\
   if ('string' != typeof html) throw new TypeError('String expected');\n\
-\n\
-  html = html.replace(/^\\s+|\\s+$/g, ''); // Remove leading/trailing whitespace\n\
-\n\
+  \n\
   // tag name\n\
   var m = /<([\\w:]+)/.exec(html);\n\
   if (!m) return document.createTextNode(html);\n\
+\n\
+  html = html.replace(/^\\s+|\\s+$/g, ''); // Remove leading/trailing whitespace\n\
+\n\
   var tag = m[1];\n\
 \n\
   // body support\n\
@@ -462,7 +463,7 @@ function parse(html) {\n\
 }\n\
 //@ sourceURL=component-domify/index.js"
 ));
-require.register("thubnail-3d/index.js", Function("exports, require, module",
+require.register("thumbnail-3d/index.js", Function("exports, require, module",
 "/**\n\
  * Module dependence\n\
  */\n\
@@ -497,9 +498,9 @@ Thumbanil.prototype.attachTo = function(parent){\n\
   return this;\n\
 }\n\
 \n\
-//@ sourceURL=thubnail-3d/index.js"
+//@ sourceURL=thumbnail-3d/index.js"
 ));
-require.register("thubnail-3d/template.js", Function("exports, require, module",
+require.register("thumbnail-3d/template.js", Function("exports, require, module",
 "module.exports = '<!-- Container -->\\n\
 <div class=\"thumb\">\\n\
   <a href=\"#\" style=\\'background-image:url({{ src }})\\'>\\n\
@@ -507,7 +508,7 @@ require.register("thubnail-3d/template.js", Function("exports, require, module",
     <span >{{ label }}</span>\\n\
   </a>\\n\
 </div>\\n\
-';//@ sourceURL=thubnail-3d/template.js"
+';//@ sourceURL=thumbnail-3d/template.js"
 ));
 
 
@@ -515,16 +516,16 @@ require.register("thubnail-3d/template.js", Function("exports, require, module",
 
 
 
-require.alias("zhang-ning-tengine/index.js", "thubnail-3d/deps/tengine/index.js");
-require.alias("zhang-ning-tengine/index.js", "thubnail-3d/deps/tengine/index.js");
+require.alias("zhang-ning-tengine/index.js", "thumbnail-3d/deps/tengine/index.js");
+require.alias("zhang-ning-tengine/index.js", "thumbnail-3d/deps/tengine/index.js");
 require.alias("zhang-ning-tengine/index.js", "tengine/index.js");
 require.alias("component-domify/index.js", "zhang-ning-tengine/deps/domify/index.js");
 
 require.alias("visionmedia-configurable.js/index.js", "zhang-ning-tengine/deps/configurable.js/index.js");
 
 require.alias("zhang-ning-tengine/index.js", "zhang-ning-tengine/index.js");
-require.alias("visionmedia-configurable.js/index.js", "thubnail-3d/deps/configurable.js/index.js");
+require.alias("visionmedia-configurable.js/index.js", "thumbnail-3d/deps/configurable.js/index.js");
 require.alias("visionmedia-configurable.js/index.js", "configurable.js/index.js");
 
-require.alias("component-domify/index.js", "thubnail-3d/deps/domify/index.js");
+require.alias("component-domify/index.js", "thumbnail-3d/deps/domify/index.js");
 require.alias("component-domify/index.js", "domify/index.js");
