@@ -1,20 +1,15 @@
 
-# thubnail-3d
+# thumbnail-3d
 
-  thubnail with 3d effect
-  [demo](http://besideriver.com/thubnail-3d/)
+  thumbnail with 3d effect
+  [demo](http://besideriver.com/thumbnail-3d/)
 
 ## Installation
-
-  Install with [component(1)](http://component.io):
-
-    $ component install zhang-ning/thubnail-3d
-
-## Example Usage
+thumbnail Example Usage
 
 ``` js
 
-  var Thumbail = require('thubnail-3d')
+  var Thumbail = require('thumbnail-3d')
     , stage    = document.querySelector('.stage')
     , imgs = [{
         src:"http://www.whichbetter.net/wp-content/uploads/2011/01/bot2-229x300.jpg?fc2c5a",
@@ -36,32 +31,7 @@
 ```
 
 ## API
-
-### Options
-
-Options are configured by the `set` method, this method works like below:
-
-``` js
-thumb.set({
-  background:'http://some/good/pic',
-  label:'your label'
-})
-```
-
-or 
-
-``` js
-thumb.set('background','http://some/img/url')
-thumb.set('label','your label')
-```
-
-* `background` img url link, default.
-* `label` img label string.
-
-### thubnail-3d#attachTo(parentNode)
-
-
-## License
+thumbnail License
 
   The MIT License (MIT)
 

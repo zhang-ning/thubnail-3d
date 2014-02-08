@@ -1,5 +1,5 @@
 
-build: components thubnail-3d.css template.js index.js
+build: components thumbnail-3d.css template.js index.js
 	@component build --dev
 
 template.js: template.html

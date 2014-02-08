@@ -1,7 +1,7 @@
 {
-  "name": "thubnail-3d",
-  "repo": "zhang-ning/thubnail-3d",
-  "description": "thubnail with 3d effect",
+  "name": "thumbnail-3d",
+  "repo": "zhang-ning/thumbnail-3d",
+  "description": "thumbnail with 3d effect",
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
@@ -17,6 +17,6 @@
     "template.js"
   ],
   "styles": [
-    "thubnail-3d.css"
+    "thumbnail-3d.css"
   ]
 }
