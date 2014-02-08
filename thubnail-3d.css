@@ -1,6 +1,7 @@
 /*Thumbnail Background*/
 .thumb {
   width: 400px; height: 300px; margin: 70px auto;
+  perspective: 1000px;
   -webkit-perspective: 1000px;
 }
 .thumb a {
@@ -9,11 +10,13 @@
   /*disabling the translucent black bg on the main image*/
   background-size: cover;
   /*3d space for children*/
+  transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   transition: all 0.5s;
+  transform: rotateX(80deg); transform-origin: bottom;
   -webkit-transform: rotateX(80deg); -webkit-transform-origin: bottom;
 }
-.thumb:hover a {-webkit-transform: rotateX(0deg); }
+.thumb:hover a { transform: rotateX(0deg);-webkit-transform: rotateX(0deg); }
 /*bottom surface */
 .thumb a:after {
   /*36px high element positioned at the bottom of the image*/
@@ -24,6 +27,7 @@
   /*draw the BG bottom up*/
   background-position: bottom;
   /*rotate the surface 90deg on the bottom axis*/
+  transform: rotateX(90deg); transform-origin: bottom;
   -webkit-transform: rotateX(90deg); -webkit-transform-origin: bottom;
 }
 /*label style*/
@@ -32,6 +36,7 @@
   position: absolute; top: 100%; left: 0; width: 100%;
   font: bold 12px/36px Montserrat; text-align: center;
   /*the rotation is a bit less than the bottom surface to avoid flickering*/
+  transform: rotateX(-89.99deg); transform-origin: top;
   -webkit-transform: rotateX(-89.99deg); -webkit-transform-origin: top;
   z-index: 1;
 }
@@ -44,7 +49,9 @@
   transition: all 0.5s; 
   /*by default the shadow will be almost flat, very transparent, scaled down with a large blur*/
   opacity: 0.15;
+  transform: rotateX(0deg) translateZ(-60px) scale(0.75);
   -webkit-transform: rotateX(0deg) translateZ(-60px) scale(0.75);
+  transform-origin: bottom;
   -webkit-transform-origin: bottom;
 }
 .thumb:hover a:before {
@@ -52,5 +59,6 @@
   /*blurred effect using box shadow as filter: blur is not supported in all browsers*/
   box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.5);
   /*pushing the shadow down and scaling it down to size*/
+  transform: rotateX(95deg) translateZ(-80px) scale(0.85);
   -webkit-transform: rotateX(95deg) translateZ(-80px) scale(0.85);
 }
